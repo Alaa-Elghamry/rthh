@@ -28,7 +28,7 @@ const navList = document.getElementById('navbar__list')
 // Build menu by iterating through the navelements
 navigation.forEach(al => {
   const navlistElement = `<li class='menu__link ${al.className}' data-link=${al.id}><a href="#${al.id}">${al.dataset.nav}</li>`
-  navList.insertAdjacentHTML('beforeend', navlistElement)https://github.com/Alaa-Elghamry/Udacity-Landing-Page.git
+  navList.insertAdjacentHTML('beforeend', navlistElement)
 })
 
 // Scroll to section on link click by listenting to the click-event in the navlist
