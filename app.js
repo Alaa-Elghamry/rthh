@@ -28,28 +28,27 @@ const navList = document.getElementById('navbar__list')
 // Build menu by iterating through the navelements
 navigation.forEach(al => {
   const navlistElement = `<li class='menu__link ${al.className}' data-link=${al.id}><a href="#${al.id}">${al.dataset.nav}</li>`
-  navList.insertAdjacentHTML('beforeend', navlistElement)
+  navList.insertAdjacentHTML('beforeend', navlistElement)https://github.com/Alaa-Elghamry/Udacity-Landing-Page.git
 })
 
 // Scroll to section on link click by listenting to the click-event in the navlist
 navList.addEventListener('click', act => {
   act.preventDefault()
-  const parent = e.target.hasAttribute('data-link')
+  const parent = act.target.hasAttribute('data-link')
     ? act.target
     : act.target.parentElement
   const Scroll = document.getElementById(parent.dataset.link)
-  Scroll.scrollIntoView({block: 'end', behavior: 'smooth'})
 })
 
 // Set section and nav link as active 
-const callback = entries => {
-  entries.forEach(entry => {
+const callback = daata => {
+  daata.forEach(data => {
     const navListElement = document.querySelector(
-      `.menu__link[data-link='${entry.target.id}']`,
+      `.menu__link[data-link='${data.target.id}']`,
     )
-    const section = document.getElementById(entry.target.id)
+    const section = document.getElementById(data.target.id)
 
-    if (entry && entry.isIntersecting) {
+    if (daata && daata.isIntersecting) {
       navListElement.classList.add('active')
       section.classList.add('active')
     } else {
