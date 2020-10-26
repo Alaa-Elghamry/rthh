@@ -18,27 +18,54 @@
  *
  */
 
-const navigation = document.querySelectorAll('section')
-const navList = document.getElementById('navbar__list')
+const navigation = document.getElementById('navbar__list');
+
+const sections = document.querySelectorAll('section');
 
 /**
  * End Global Variables
  */
 
 // Build menu by iterating through the navelements
-navigation.forEach(al => {
-  const navlistElement = `<li class='menu__link ${al.className}' data-link=${al.id}><a href="#${al.id}">${al.dataset.nav}</li>`
-  navList.insertAdjacentHTML('beforeend', navlistElement)
-})
+const navBuilder = () => {
 
-// Scroll to section on link click by listenting to the click-event in the navlist
-navList.addEventListener('click', act => {
-  act.preventDefault()
-  const parent = act.target.hasAttribute('data-link')
-    ? act.target
-    : act.target.parentElement
-  const Scroll = document.getElementById(parent.dataset.link)
-})
+  let navUI = '';
+  // looping over all sections
+  sections.forEach(section => {
+
+      const sectionID = section.id;
+      const sectionDataNav = section.dataset.nav;
+
+      navUI += `<li><a class="menu__link" href="#${sectionID}">${sectionDataNav}</a></li>`;
+
+  });
+  // append all elements to the navigation
+  navigation.innerHTML = navUI;
+  const navBuilder = () => {
+
+    let navUI = '';
+    // looping over all sections
+    sections.forEach(section => {
+
+        const sectionID = section.id;
+        const sectionDataNav = section.dataset.nav;
+
+        navUI += `<li><a class="menu__link" href="#${sectionID}">${sectionDataNav}</a></li>`;
+
+    });
+    // append all elements to the navigation
+    navigation.innerHTML = navUI;
+
+
+};
+
+navBuilder();
+
+
+};
+
+navBuilder();
+
 
 // Set section and nav link as active 
 const callback = daata => {
